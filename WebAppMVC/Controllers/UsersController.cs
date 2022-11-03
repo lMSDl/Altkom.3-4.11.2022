@@ -13,9 +13,9 @@ namespace WebAppMVC.Controllers
 			_service = service;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
+			return View(await _service.ReadAsync());
 		}
 	}
 }

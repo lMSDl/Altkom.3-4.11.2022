@@ -1,0 +1,40 @@
+﻿@using Models
+@model IEnumerable<User>
+
+@*@foreach(var user in Model) {
+	<p>@user.Name : @user.Password</p>
+}*@
+
+<div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					@*DisplayName działa jak HttpUtility.HtmlEncode*@
+					@Html.DisplayName(nameof(Models.Entity.Id))
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Name)
+				</th>
+				<th>
+					@Html.Label(nameof(Models.User.Password))
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var user in Model) {
+				<tr>
+					<th>
+						@Html.DisplayFor(_ => user.Id)
+					</th>
+					<th>
+						@Html.DisplayFor(_ => user.Name)
+					</th>
+					<th>
+						@user.Password
+					</th>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
