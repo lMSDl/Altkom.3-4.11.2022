@@ -9,12 +9,21 @@ using Services.Bogus.Fakers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization(x => x.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(Program))); //automatyczne t³umaczenie adnotacji
         builder.Services.AddDirectoryBrowser();
 
         builder.Services.AddSingleton<IService<User>, Service<User>>();
         builder.Services.AddTransient<EntityFaker<User>, UserFaker>();
 
+builder.Services.AddLocalization(x => x.ResourcesPath = "Resources");
+builder.Services.Configure<RequestLocalizationOptions>(x =>
+{
+    x.SetDefaultCulture("en");
+    x.AddSupportedCultures("en-US", "pl");
+    x.AddSupportedUICultures("en-US", "pl");
+});
 
 
 var app = builder.Build();
@@ -53,7 +62,7 @@ var app = builder.Build();
         });
 
 
-
+        app.UseRequestLocalization();
         app.UseRouting();
 
         app.UseAuthorization();
