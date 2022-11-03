@@ -1,0 +1,48 @@
+﻿
+Simpe text
+Simpe text
+<br>
+<p>Some text</p>
+
+@this.GetType().FullName
+<br>
+@@this.GetType().FullName
+
+<br>
+abc@mail.com
+
+<p>2 + 4 to @(2 + 4)</p>
+<p>Dzisiejsza data to @DateTime.Now</p>
+<p>Od 2000 roku minęło @(DateTime.Now.Year - 2000) lat</p>
+
+@{
+	var number1 = 100;
+	var number2 = 2000;
+}
+
+<p>@number1 - @number2 = @(number1 - number2)</p>
+
+@{
+	void Show(string param) {
+		for (int i = 0; i < 3; i++)
+		{
+			//wewnątrz metody możemy pisać w html
+			<p>@param</p>
+		}
+	}
+
+	Show("o/");
+}
+
+@{Show("o/");}
+
+
+@if(DateTime.Now.Second % 2 == 0) {
+	
+	//wyświetlenie jako zwykły tekst w bloku z @
+	<text>Even</text>
+}
+else {
+	//@: wyświetlenie jako zwykły tekst w bloku z @
+	@:Odd
+}
