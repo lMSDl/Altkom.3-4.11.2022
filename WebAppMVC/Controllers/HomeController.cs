@@ -23,9 +23,15 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
-        public IActionResult Razor()
+        public IActionResult Razor(string id)
         {
-            return View();
+            ViewData["param1"] = $"ViewData: {id}";
+            ViewData["param2"] = $"{id} :ViewData";
+
+            ViewBag.Data = $"{id} :ViewBag";
+            ViewBag.SomeData = $"ViewBag: {id}";
+
+            return View((object)id);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

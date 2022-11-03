@@ -1,4 +1,5 @@
-﻿
+﻿@model string
+
 Simpe text
 Simpe text
 <br>
@@ -27,7 +28,7 @@ abc@mail.com
 		for (int i = 0; i < 3; i++)
 		{
 			//wewnątrz metody możemy pisać w html
-			<p>@param</p>
+	<p>@param</p>
 		}
 	}
 
@@ -46,3 +47,20 @@ else {
 	//@: wyświetlenie jako zwykły tekst w bloku z @
 	@:Odd
 }
+
+<br>
+@ViewData["param1"]
+<br>
+@ViewData["param2"]
+<br>
+Param3: @ViewData["param3"]
+
+<br>
+@ViewBag.Data
+<br>
+@ViewBag.SomeData
+<br>
+Param3: @ViewBag.NotExistingData
+
+<br>
+@Model?.ToUpper()
