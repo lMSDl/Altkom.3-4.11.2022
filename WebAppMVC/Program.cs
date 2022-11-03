@@ -2,14 +2,22 @@
 //public static void Main(string[] args)
 //{
 using Microsoft.Extensions.FileProviders;
+using Models;
+using Services.Interfaces;
+using Services.Bogus;
+using Services.Bogus.Fakers;
 
 var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddDirectoryBrowser();
 
-builder.Services.AddDirectoryBrowser();
+        builder.Services.AddSingleton<IService<User>, Service<User>>();
+        builder.Services.AddTransient<EntityFaker<User>, UserFaker>();
 
-        var app = builder.Build();
+
+
+var app = builder.Build();
 
         if (!app.Environment.IsDevelopment())
         {
