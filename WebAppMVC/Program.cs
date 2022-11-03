@@ -52,9 +52,12 @@ builder.Services.AddDirectoryBrowser();
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+            pattern: "{controller=home}/{action=index}/{id?}");
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "greetings/{controller=Hello}/{action=Hi}/{userInput?}");
 
-        app.Run();
+app.Run();
 
     //}
 //}
