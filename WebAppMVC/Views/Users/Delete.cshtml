@@ -1,36 +1,17 @@
 ﻿@model User
 
-@inject IStringLocalizer<Program> StringLocalizer
-@inject IHtmlLocalizer<Program> HtmlLocalizer
-@inject IViewLocalizer ViewLocalizer;
 
 
 <div>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>
-					@Html.DisplayName(StringLocalizer[nameof(Models.Entity.Id)])
-				</th>
-				<th>
-					@HtmlLocalizer["italics", /*encoded*/ Html.DisplayNameFor(x => x.Name)]
-				</th>
-				<th>
-					@Html.Label(ViewLocalizer[nameof(Models.User.Password)].Value)
-				</th>
+				<partial name="_UserHeader" model="new Models.User()"/>
 			</tr>
 		</thead>
 		<tbody>
 				<tr>
-					<th>
-						@Html.DisplayFor(_ => Model.Id)
-					</th>
-					<th>
-						@Html.DisplayFor(_ => Model.Name)
-					</th>
-					<th>
-						@Model.Password
-					</th>
+					<partial name="_UserBody" for="@Model"/>
 				</tr>
 		</tbody>
 	</table>

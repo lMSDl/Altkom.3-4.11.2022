@@ -28,33 +28,13 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>
-					@*DisplayName działa jak HttpUtility.HtmlEncode*@
-					@Html.DisplayName(StringLocalizer[nameof(Models.Entity.Id)])
-				</th>
-				<th>
-					@*@Html.DisplayNameFor(model => model.Name)*@ @*automatyczne tłumaczenie adnotacji skonfigurowane w klasie Program*@
-					@*@StringLocalizer["italics", Html.DisplayNameFor(x => x.Name)]*@ @*nie stosuje formatowania*@
-					@HtmlLocalizer["italics", /*encoded*/ Html.DisplayNameFor(x => x.Name)] @*stosuje formatowanie*@
-				</th>
-				<th>
-					@*@Html.Label(nameof(Models.User.Password))*@
-					@Html.Label(ViewLocalizer[nameof(Models.User.Password)].Value)
-				</th>
+				@await Html.PartialAsync("_UserHeader", new User())
 			</tr>
 		</thead>
 		<tbody>
 			@foreach(var user in Model) {
 				<tr>
-					<th>
-						@Html.DisplayFor(_ => user.Id)
-					</th>
-					<th>
-						@Html.DisplayFor(_ => user.Name)
-					</th>
-					<th>
-						@user.Password
-					</th>
+					@await Html.PartialAsync("_UserBody", user)
 					<th>
 						@Html.ActionLink("Delete", "Delete", "Users", new {user.Id})
 					</th>

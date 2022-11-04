@@ -1,0 +1,19 @@
+﻿@inject IStringLocalizer<Program> StringLocalizer
+@inject IHtmlLocalizer<Program> HtmlLocalizer
+@inject IViewLocalizer ViewLocalizer;
+
+@model Models.User
+
+<th>
+	@*DisplayName działa jak HttpUtility.HtmlEncode*@
+	@Html.DisplayName(StringLocalizer[nameof(Models.Entity.Id)])
+</th>
+<th>
+	@*@Html.DisplayNameFor(model => model.Name)*@ @*automatyczne tłumaczenie adnotacji skonfigurowane w klasie Program*@
+	@*@StringLocalizer["italics", Html.DisplayNameFor(x => x.Name)]*@ @*nie stosuje formatowania*@
+	@HtmlLocalizer["italics", /*encoded*/ Html.DisplayNameFor(x => x.Name)] @*stosuje formatowanie*@
+</th>
+<th>
+	@*@Html.Label(nameof(Models.User.Password))*@
+	@Html.Label(ViewLocalizer[nameof(Models.User.Password)].Value)
+</th>
