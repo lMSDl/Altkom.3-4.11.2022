@@ -13,8 +13,11 @@
 	@using(Html.BeginForm("search", "users")) {
 		@:Phrase @Html.TextBox("phrase") <br>
 		<input type="submit" value="Search" class="btn" />
+
+		@*@Html.AntiForgeryToken()*@
 	}
 </div>
+
 
 <div>
 	<table class="table">
