@@ -19,16 +19,31 @@ namespace WebAppMVC.Controllers
 		}
 
 		//[ValidateAntiForgeryToken] //walidacja tokena formularza dla oznaczonej akcji
-		[HttpPost]
+		//[HttpPost]
 		public async Task<IActionResult> Search(string? phrase)
 		{
 			var users = await _service.ReadAsync();
-			if(!string.IsNullOrWhiteSpace(phrase))
+			if (!string.IsNullOrWhiteSpace(phrase))
 			{
 				var properties = typeof(User).GetProperties().Where(x => x.CanRead).ToList();
 				users = users.Where(x => properties.Any(xx => xx.GetValue(x)?.ToString()?.Contains(phrase) ?? false)).ToList();
 			}
 			return View(nameof(Index), users);
+		}
+
+		public async Task<IActionResult> Delete(int id)
+		{
+			var user = await _service.ReadAsync(id);
+			if (user == null)
+				return NotFound();
+			return View(user);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> DeleteUser(int id)
+		{
+			await _service.DeleteAsync(id);
+			return RedirectToAction(nameof(Index));
 		}
 	}
 }

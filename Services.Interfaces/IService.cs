@@ -6,5 +6,6 @@ namespace Services.Interfaces
 	{
 		Task<IEnumerable<T>> ReadAsync();
         Task<T?> ReadAsync(int id);
+		Task DeleteAsync(int id);
     }
 }

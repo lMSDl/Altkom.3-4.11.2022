@@ -55,6 +55,9 @@
 					<th>
 						@user.Password
 					</th>
+					<th>
+						@Html.ActionLink("Delete", "Delete", "Users", new {user.Id})
+					</th>
 				</tr>
 			}
 		</tbody>

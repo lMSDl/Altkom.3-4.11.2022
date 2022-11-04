@@ -13,6 +13,12 @@ namespace Services.Bogus
 			_entities = entityFaker.Generate(10);
 		}
 
+		public Task DeleteAsync(int id)
+		{
+			_entities.Remove(_entities.SingleOrDefault(x => x.Id == id)!);
+			return Task.CompletedTask;
+		}
+
 		public Task<IEnumerable<T>> ReadAsync()
 		{
 			return Task.FromResult(_entities.ToList().AsEnumerable());

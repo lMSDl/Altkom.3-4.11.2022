@@ -1,0 +1,47 @@
+﻿@model User
+
+@inject IStringLocalizer<Program> StringLocalizer
+@inject IHtmlLocalizer<Program> HtmlLocalizer
+@inject IViewLocalizer ViewLocalizer;
+
+
+<div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayName(StringLocalizer[nameof(Models.Entity.Id)])
+				</th>
+				<th>
+					@HtmlLocalizer["italics", /*encoded*/ Html.DisplayNameFor(x => x.Name)]
+				</th>
+				<th>
+					@Html.Label(ViewLocalizer[nameof(Models.User.Password)].Value)
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<th>
+						@Html.DisplayFor(_ => Model.Id)
+					</th>
+					<th>
+						@Html.DisplayFor(_ => Model.Name)
+					</th>
+					<th>
+						@Model.Password
+					</th>
+				</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	@using(Html.BeginForm("DeleteUser", "Users")){
+		<input type="hidden" asp-for="@Model.Id"/>
+		@Html.HiddenFor(x => x.Id);
+
+		<input type="submit" value="Delete" class="btn" />
+		<a asp-action="Index" class="btn" >Cancel</a>
+	}
+</div>
