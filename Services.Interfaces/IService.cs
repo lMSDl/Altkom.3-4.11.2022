@@ -8,5 +8,6 @@ namespace Services.Interfaces
         Task<T?> ReadAsync(int id);
 		Task DeleteAsync(int id);
 		Task UpdateAsync(int id, T entity);
+        Task<int> CreateAsync(T entity);
     }
 }

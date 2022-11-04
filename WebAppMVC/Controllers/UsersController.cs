@@ -60,9 +60,23 @@ namespace WebAppMVC.Controllers
         //public async Task<IActionResult> EditUser(int id, [Bind("Name")] User user1, [Bind("Password")] User user2)
         public async Task<IActionResult> EditUser(int id, [Bind("Name", "Password")] User user)
         {
-			await _service.UpdateAsync(id, user);
+			if (id == 0)
+				await _service.CreateAsync(user);
+			else
+			{
+				if(string.IsNullOrEmpty(user.Password))
+				{
+					user.Password = (await _service.ReadAsync(id))!.Password;
+				}
+				await _service.UpdateAsync(id, user);
+			}
 
             return RedirectToAction(nameof(Index));
         }
+
+		public IActionResult Add()
+		{
+			return View(nameof(Edit), new User());
+		}
     }
 }

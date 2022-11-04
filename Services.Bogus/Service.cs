@@ -13,6 +13,13 @@ namespace Services.Bogus
 			_entities = entityFaker.Generate(10);
 		}
 
+		public Task<int> CreateAsync(T entity)
+		{
+			entity.Id = _entities.Max(x => x.Id) + 1;
+			_entities.Add(entity);
+			return Task.FromResult(entity.Id);
+		}
+
 		public Task DeleteAsync(int id)
 		{
 			_entities.Remove(_entities.SingleOrDefault(x => x.Id == id)!);
@@ -36,5 +43,7 @@ namespace Services.Bogus
 			await DeleteAsync(id);
 			_entities.Add(entity);
 		}
+
+
 	}
 }
