@@ -10,6 +10,13 @@
 }*@
 
 <div>
+	@using(Html.BeginForm("search", "users")) {
+		@:Phrase @Html.TextBox("phrase") <br>
+		<input type="submit" value="Search" class="btn" />
+	}
+</div>
+
+<div>
 	<table class="table">
 		<thead>
 			<tr>

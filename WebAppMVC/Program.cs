@@ -1,11 +1,12 @@
 //class Program {
 //public static void Main(string[] args)
 //{
+global using Models;
 using Microsoft.Extensions.FileProviders;
-using Models;
 using Services.Interfaces;
 using Services.Bogus;
 using Services.Bogus.Fakers;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
