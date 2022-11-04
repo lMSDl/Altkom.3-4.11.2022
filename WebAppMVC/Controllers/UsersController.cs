@@ -60,6 +60,17 @@ namespace WebAppMVC.Controllers
         //public async Task<IActionResult> EditUser(int id, [Bind("Name")] User user1, [Bind("Password")] User user2)
         public async Task<IActionResult> EditUser(int id, [Bind("Name", "Password")] User user)
         {
+            var duplicate = (await _service.ReadAsync()).SingleOrDefault(x => x.Name == user.Name);
+            if (duplicate != null && (id == 0 || id != duplicate.Id))
+            {
+                ModelState.AddModelError(nameof(user.Name), "Username must be unique");
+            }
+            if (!ModelState.IsValid)
+			{
+				return View(nameof(Edit), user);
+			}
+
+
 			if (id == 0)
 				await _service.CreateAsync(user);
 			else
