@@ -17,7 +17,12 @@
 		@*@Html.AntiForgeryToken()*@
 	}
 </div>
-
+<div>
+	<form asp-action="search" asp-antiforgery="false">
+		<input type="text" name="phrase" />
+		<input type="submit" value="Search" class="btn" />
+	</form>
+</div>
 
 <div>
 	<table class="table">

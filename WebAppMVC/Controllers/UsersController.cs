@@ -3,6 +3,7 @@ using Services.Interfaces;
 
 namespace WebAppMVC.Controllers
 {
+	[AutoValidateAntiforgeryToken] //walidacja tokena formularza dla wszystkich akcji POST
 	public class UsersController : Controller
 	{
 		private readonly IService<User> _service;
@@ -17,7 +18,8 @@ namespace WebAppMVC.Controllers
 			return View(await _service.ReadAsync());
 		}
 
-		[ValidateAntiForgeryToken]
+		//[ValidateAntiForgeryToken] //walidacja tokena formularza dla oznaczonej akcji
+		[HttpPost]
 		public async Task<IActionResult> Search(string? phrase)
 		{
 			var users = await _service.ReadAsync();
