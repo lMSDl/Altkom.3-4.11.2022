@@ -36,6 +36,7 @@
 				<tr>
 					@await Html.PartialAsync("_UserBody", user)
 					<th>
+						@Html.ActionLink("Edit", "Edit", "Users", new {user.Id})
 						@Html.ActionLink("Delete", "Delete", "Users", new {user.Id})
 					</th>
 				</tr>

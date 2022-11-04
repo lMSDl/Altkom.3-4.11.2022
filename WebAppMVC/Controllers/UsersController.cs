@@ -45,5 +45,24 @@ namespace WebAppMVC.Controllers
 			await _service.DeleteAsync(id);
 			return RedirectToAction(nameof(Index));
 		}
-	}
+
+		public async Task<IActionResult> Edit(int id)
+        {
+            var user = await _service.ReadAsync(id);
+            if (user == null)
+                return NotFound();
+            return View(user);
+        }
+
+        [HttpPost]
+        //public async Task<IActionResult> EditUser(int id, string name, string password)
+        //public async Task<IActionResult> EditUser(int id, User user)
+        //public async Task<IActionResult> EditUser(int id, [Bind("Name")] User user1, [Bind("Password")] User user2)
+        public async Task<IActionResult> EditUser(int id, [Bind("Name", "Password")] User user)
+        {
+			await _service.UpdateAsync(id, user);
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
 }

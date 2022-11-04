@@ -29,5 +29,12 @@ namespace Services.Bogus
 			var entity = _entities.FirstOrDefault(x => x.Id == id);
 			return Task.FromResult(entity);
 		}
+
+		public async Task UpdateAsync(int id, T entity)
+		{
+			entity.Id = id;
+			await DeleteAsync(id);
+			_entities.Add(entity);
+		}
 	}
 }
