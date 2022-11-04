@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{C1311FA9-2B78-49D1-AF96-2BD0B6BCEC90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{C1311FA9-2B78-49D1-AF96-2BD0B6BCEC90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{38552310-1B37-4585-94F2-205B02054752}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{38552310-1B37-4585-94F2-205B02054752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Interfaces", "Services.Interfaces\Services.Interfaces.csproj", "{DB971DFB-1E91-4C6A-9642-8554B8123E51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Interfaces", "Services.Interfaces\Services.Interfaces.csproj", "{DB971DFB-1E91-4C6A-9642-8554B8123E51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Bogus", "Services.Bogus\Services.Bogus.csproj", "{22341D3C-AED6-4A0F-8282-2BF8CD9BEFA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Bogus", "Services.Bogus\Services.Bogus.csproj", "{22341D3C-AED6-4A0F-8282-2BF8CD9BEFA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppRazor", "WebAppRazor\WebAppRazor.csproj", "{21F08A8F-1F8A-4376-B922-314DFD0EF46D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{22341D3C-AED6-4A0F-8282-2BF8CD9BEFA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22341D3C-AED6-4A0F-8282-2BF8CD9BEFA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22341D3C-AED6-4A0F-8282-2BF8CD9BEFA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21F08A8F-1F8A-4376-B922-314DFD0EF46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21F08A8F-1F8A-4376-B922-314DFD0EF46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21F08A8F-1F8A-4376-B922-314DFD0EF46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21F08A8F-1F8A-4376-B922-314DFD0EF46D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
